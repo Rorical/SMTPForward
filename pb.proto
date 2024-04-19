@@ -1,0 +1,17 @@
+syntax = "proto3";
+option go_package = "./pb";
+package pb;
+
+service SMTPForward {
+  rpc SendSMTP(SMTPData) returns (SMTPResult) {}
+}
+
+message SMTPData {
+  string data = 1;
+  string from = 2;
+  repeated string recipients = 3;
+}
+
+message SMTPResult {
+  bool success = 4;
+}
